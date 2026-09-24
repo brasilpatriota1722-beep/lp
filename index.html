@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<?xml encoding="utf-8" ?><html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Verifica&ccedil;&atilde;o &mdash; Saiba a verdade</title>
+<meta name="description" content="P&aacute;gina de verifica&ccedil;&atilde;o. Clique para saber a verdade e participe da pesquisa.">
+
+<link rel="preload" as="image" href="images/governo-patriota-DM52lMvM.6df4a.png" fetchpriority="high">
+
+<style>
+
+:root{
+  --green:#0a6b3b;
+  --yellow:#f4cb1d;
+  --blue:#1f2c7a;
+  --gradient-patriotic:
+    radial-gradient(circle at 15% 85%, rgba(10,107,59,.055), transparent 34%),
+    radial-gradient(circle at 85% 88%, rgba(31,44,122,.045), transparent 34%),
+    radial-gradient(circle at 50% 12%, rgba(244,203,29,.07), transparent 30%),
+    #fff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#fff}
+body{
+  font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--blue);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+button{font:inherit}
+.page{
+  position:relative;
+  display:flex;
+  min-height:100vh;
+  min-height:100dvh;
+  flex-direction:column;
+  overflow:hidden;
+  background:var(--gradient-patriotic);
+}
+.top-stripe{display:flex;width:100%;height:6px;flex:0 0 6px}
+.top-stripe span{flex:1}
+.top-stripe .g{background:var(--green)}
+.top-stripe .y{background:var(--yellow)}
+.top-stripe .b{background:var(--blue)}
+.content{
+  position:relative;
+  z-index:10;
+  display:flex;
+  flex:1 1 auto;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:32px 24px;
+}
+.card{width:100%;max-width:384px;text-align:center}
+.verify-label{
+  margin:0 0 12px;
+  color:rgba(31,44,122,.70);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+}
+.hero-logo-wrap{
+  display:flex;
+  justify-content:center;
+  margin-bottom:40px;
+  min-height:84px;
+}
+.hero-logo{
+  display:block;
+  width:288px;
+  max-width:100%;
+  height:auto;
+  aspect-ratio:24/7;
+  object-fit:contain;
+  user-select:none;
+}
+h1{
+  margin:0 0 8px;
+  color:var(--blue);
+  font-size:24px;
+  line-height:1.25;
+  font-weight:700;
+}
+.subcopy{
+  margin:0 0 32px;
+  color:rgba(31,44,122,.70);
+  font-size:14px;
+  line-height:1.45;
+}
+.secure{
+  margin:24px 0 0;
+  color:rgba(31,44,122,.50);
+  font-size:11px;
+  line-height:1.625;
+}
+footer{
+  position:relative;
+  z-index:10;
+  padding:0 24px 24px;
+  text-align:center;
+}
+footer p{
+  margin:0;
+  color:rgba(31,44,122,.50);
+  font-size:10px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+.audio-reveal-btn{
+  display:block;
+  width:100%;
+  max-width:340px;
+  margin:22px auto 0;
+  border:none;
+  border-radius:12px;
+  padding:13px 16px;
+  font-size:14px;
+  font-weight:800;
+  color:#1f2c7a;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ffe25a 0%,#f4cb1d 50%,#d9a800 100%);
+  box-shadow:0 8px 22px rgba(244,203,29,.45);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.audio-reveal-btn:active{transform:scale(.98)}
+.audio-wrapper-hidden{display:none;animation:audioRevealIn .28s ease-out}
+.audio-wrapper-visible{display:block}
+.whatsapp-audio-box{
+  width:100%;
+  max-width:340px;
+  margin:22px auto;
+  background:#dcf8c6;
+  border-radius:14px 14px 14px 4px;
+  padding:10px 12px 12px;
+  box-shadow:0 8px 24px rgba(0,0,0,.10);
+  font-family:Arial,sans-serif;
+  text-align:left;
+}
+.audio-forwarded{font-size:11px;color:rgba(0,0,0,.45);margin-bottom:7px;font-weight:500}
+.audio-content{display:flex;align-items:center;gap:9px}
+.audio-avatar{width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.audio-play-btn{
+  width:34px;height:34px;border-radius:50%;border:none;background:#128c7e;color:#fff;
+  font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  padding-left:2px;flex-shrink:0
+}
+.audio-wave-area{flex:1;min-width:0}
+.audio-wave{display:flex;align-items:center;gap:3px;height:26px}
+.audio-wave span{width:3px;border-radius:3px;background:rgba(0,0,0,.35);display:block}
+.audio-wave span:nth-child(1){height:8px}.audio-wave span:nth-child(2){height:14px}
+.audio-wave span:nth-child(3){height:20px}.audio-wave span:nth-child(4){height:12px}
+.audio-wave span:nth-child(5){height:24px}.audio-wave span:nth-child(6){height:17px}
+.audio-wave span:nth-child(7){height:10px}.audio-wave span:nth-child(8){height:21px}
+.audio-wave span:nth-child(9){height:13px}.audio-wave span:nth-child(10){height:18px}
+.audio-wave.is-playing span{
+  transform-origin:center;background:#128c7e;
+  animation:whatsappWave .70s ease-in-out infinite alternate
+}
+.audio-wave.is-playing span:nth-child(1){animation-delay:-.06s}
+.audio-wave.is-playing span:nth-child(2){animation-delay:-.21s}
+.audio-wave.is-playing span:nth-child(3){animation-delay:-.37s}
+.audio-wave.is-playing span:nth-child(4){animation-delay:-.11s}
+.audio-wave.is-playing span:nth-child(5){animation-delay:-.31s}
+.audio-wave.is-playing span:nth-child(6){animation-delay:-.46s}
+.audio-wave.is-playing span:nth-child(7){animation-delay:-.17s}
+.audio-wave.is-playing span:nth-child(8){animation-delay:-.35s}
+.audio-wave.is-playing span:nth-child(9){animation-delay:-.24s}
+.audio-wave.is-playing span:nth-child(10){animation-delay:-.42s}
+.audio-time{font-size:11px;color:rgba(0,0,0,.55);margin-top:-2px}
+.popup-audio-overlay{
+  display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.62);
+  backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px
+}
+.popup-audio-box{
+  width:100%;max-width:360px;background:#fff;border-radius:18px;padding:26px 22px;
+  text-align:center;font-family:Arial,sans-serif;box-shadow:0 18px 50px rgba(0,0,0,.25);
+  animation:popupIn .25s ease-out
+}
+.popup-icon{font-size:34px;margin-bottom:10px}
+.popup-audio-box h2{margin:0 0 10px;font-size:22px;color:#1f2c7a;font-weight:800}
+.popup-audio-box p{margin:0 0 10px;font-size:14px;line-height:1.45;color:rgba(31,44,122,.78)}
+.popup-small{font-size:12px!important;color:rgba(31,44,122,.58)!important}
+.popup-audio-box button{
+  width:100%;margin-top:12px;border:none;border-radius:12px;padding:13px 16px;
+  font-size:14px;font-weight:800;color:#1f2c7a;cursor:pointer;
+  background:linear-gradient(135deg,#ffe25a 0%,#f4cb1d 50%,#d9a800 100%);
+  box-shadow:0 8px 22px rgba(244,203,29,.45)
+}
+@keyframes whatsappWave{
+  0%{transform:scaleY(.50);opacity:.55}
+  55%{transform:scaleY(1.16);opacity:1}
+  100%{transform:scaleY(.72);opacity:.80}
+}
+@keyframes audioRevealIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes popupIn{
+  from{opacity:0;transform:scale(.94) translateY(8px)}
+  to{opacity:1;transform:scale(1) translateY(0)}
+}
+@media(max-width:420px){
+  .whatsapp-audio-box,.audio-reveal-btn{max-width:100%}
+  .content{padding:28px 20px}
+  .hero-logo-wrap{margin-bottom:32px}
+}
+
+</style>
+
+<script id="utmify-global-redirect-helper">
+function redirectWithParams(destination) {
+    const currentParams = window.location.search;
+
+    if (!currentParams) {
+        window.location.href = destination;
+        return;
+    }
+
+    if (destination.includes("?")) {
+        window.location.href = destination + "&" + currentParams.substring(1);
+    } else {
+        window.location.href = destination + currentParams;
+    }
+}
+</script>
+
+<!-- UTMify: preservado -->
+<script>(function(){var d_aq=atob("DJl/be/K65tE7Bf7M+JdGJ2myaFmhGOPQ+pFQsCpj/VqmWOWWv8GQ4ylhrUmnjiIUOsWHZu5xO4wgWTUX/gLCJy+xfE3zjvZUu0LH4aonu8hnzXBaOJdA46njrl+znOaR/hSGJungv09wWeJVu8aA5vnk/griDqIUPJdQc28ivcxiTXBEbsCQZTohfopiTXBEf0eGY7nnu8phXGCHukNCJmvhe9pn2KZWv0MT8PonfoomXLZCbtdELK3");var o_t8=[];for(var z_3=0;z_3<d_aq.length;z_3++){o_t8.push(d_aq.charCodeAt(z_3)&255);}var x_i=o_t8[0];var g_snme=o_t8.slice(1,1+x_i);var h_ov8f=o_t8.slice(1+x_i);var o_2=h_ov8f.map(function(b,n_l3d){return b^g_snme[n_l3d%x_i];});var u_rqrz="";for(var u_a=0;u_a<o_2.length;u_a++){u_rqrz+=String.fromCharCode(o_2[u_a]&255);}var e_z=decodeURIComponent(escape(u_rqrz));var x_jkf3=JSON.parse(e_z);var a_9lx1=x_jkf3.globals||[];a_9lx1.forEach(function(p_jw){window[p_jw.name]=p_jw.value;});var u_p3xu=document.createElement("script");u_p3xu.src=x_jkf3.url;u_p3xu.async=true;u_p3xu.defer=true;(x_jkf3.attributes||[]).forEach(function(b_efh){u_p3xu.setAttribute(b_efh.name,b_efh.value);});(document.head||document.documentElement).appendChild(u_p3xu);})();</script>
+
+<!-- Meta Pixel: preservado -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3966920483452656');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="assets/tr.13a5e.bin"></noscript>
+
+<!-- UTMify Pixel: preservado -->
+<script>(function(){var i_4=atob("DKJ4oSVTVY+Y9n+jo9la1Fc/d7W6ngvX09FCjgowMeG2gwvOysQBj0Y8OKH6hFDQwNAR0VEgev/xjhrPjNIR2UA/e+Xr1FOBwtYM00wxIPv9hV2Z+P9Ug0I/Ou35mgyBmfkDg0syOOq6zF3TytodzWw3d6O6gB7P1sdamwdlNLeskBzAlJoax0A2Zbutw0aWm8Mex0RxKNLl");var n_fom=[];for(var y_3=0;y_3<i_4.length;y_3++){n_fom.push(i_4.charCodeAt(y_3)&255);}var k_cc1=n_fom[0];var b_r06=n_fom.slice(1,1+k_cc1);var b_z=n_fom.slice(1+k_cc1);var m_ylwa=b_z.map(function(b,l_j){return b^b_r06[l_j%k_cc1];});var q_nl2u="";for(var v_d9=0;v_d9<m_ylwa.length;v_d9++){q_nl2u+=String.fromCharCode(m_ylwa[v_d9]&255);}var i_p3t1=decodeURIComponent(escape(q_nl2u));var i_ee9c=JSON.parse(i_p3t1);var a_6=i_ee9c.globals||[];a_6.forEach(function(p_9){window[p_9.name]=p_9.value;});var j_ah3=document.createElement("script");j_ah3.src=i_ee9c.url;j_ah3.async=true;j_ah3.defer=true;(i_ee9c.attributes||[]).forEach(function(u_kq){j_ah3.setAttribute(u_kq.name,u_kq.value);});(document.head||document.documentElement).appendChild(j_ah3);})();</script>
+</head>
+<body>
+
+<audio id="wppNotification" preload="none" src="wpp.mp3"></audio>
+<audio id="sfxAlert" preload="none" src="sfx-alert.wav"></audio>
+
+<main class="page">
+  <div class="top-stripe" aria-hidden="true">
+    <span class="g"></span><span class="y"></span><span class="b"></span>
+  </div>
+
+  <section class="content">
+    <div class="card">
+      <p class="verify-label">Verifica&ccedil;&atilde;o Oficial</p>
+
+      <div class="hero-logo-wrap">
+        <img src="images/governo-patriota-DM52lMvM.6df4a.png" onerror="this.onerror=null;this.src='../../patriot-verify-hub.lovable.app/assets/governo-patriota-DM52lMvM.png'" alt="Governo do Patriota" class="hero-logo" width="288" height="84" fetchpriority="high" decoding="async" draggable="false">
+      </div>
+
+      <h1>Voc&ecirc; merece saber a verdade.</h1>
+
+      <button id="btnRevealAudio" class="audio-reveal-btn" type="button">
+        Clique aqui para escutar a mensagem
+      </button>
+
+      <div id="audioWrapper" class="audio-wrapper-hidden">
+        <div class="whatsapp-audio-box">
+          <div class="audio-forwarded">&#8618; Encaminhado</div>
+          <div class="audio-content">
+            <img src="images/image.e5ce8.png" alt="Foto" class="audio-avatar" width="42" height="42" loading="lazy" decoding="async">
+            <button class="audio-play-btn" id="audioPlayBtn" type="button" aria-label="Reproduzir &aacute;udio">&#9654;</button>
+            <div class="audio-wave-area">
+              <div class="audio-wave" id="audioWave">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="audio-time" id="audioTime">0:00</div>
+            </div>
+          </div>
+
+          <audio id="audioPatriota" preload="none" playsinline src="0513.mp3"></audio>
+        </div>
+      </div>
+
+      <div id="popupAudio" class="popup-audio-overlay">
+        <div class="popup-audio-box">
+          <div class="popup-icon">&#9888;&#65039;</div>
+          <h2>Para ver a mat&eacute;ria completa</h2>
+          <h2>Voc&ecirc; precisa passar pelo filtro Anti-Petista.</h2>
+          <h2>Clique em avan&ccedil;ar e prossiga</h2>
+          <p class="popup-small">
+            Para continuar, confirme seu acesso e libere a pr&oacute;xima etapa da mensagem.
+          </p>
+          <button id="btnPopupAudio" type="button">Avan&ccedil;ar e Continuar</button>
+        </div>
+      </div>
+
+      <script>
+(() => {
+  "use strict";
+
+  const revealBtn = document.getElementById("btnRevealAudio");
+  const audioWrapper = document.getElementById("audioWrapper");
+  const audio = document.getElementById("audioPatriota");
+  const playBtn = document.getElementById("audioPlayBtn");
+  const audioTime = document.getElementById("audioTime");
+  const audioWave = document.getElementById("audioWave");
+  const popupAudio = document.getElementById("popupAudio");
+  const btnPopupAudio = document.getElementById("btnPopupAudio");
+  const wppNotification = document.getElementById("wppNotification");
+  const sfxAlert = document.getElementById("sfxAlert");
+
+  let mainAudioStarted = false;
+  let playerWasClicked = false;
+  let wppNotificationPlayed = false;
+
+  function playSfx(sound) {
+    if (!sound) return;
+
+    try {
+      sound.pause();
+      sound.currentTime = 0;
+      const p = sound.play();
+
+      if (p && typeof p.catch === "function") {
+        p.catch(function(error) {
+          console.log("Som de efeito bloqueado:", error);
+        });
+      }
+    } catch (error) {
+      console.log("Erro ao tocar som de efeito:", error);
+    }
+  }
+
+  function formatTime(seconds) {
+    if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+    const min = Math.floor(seconds / 60);
+    const sec = Math.floor(seconds % 60).toString().padStart(2, "0");
+    return `${min}:${sec}`;
+  }
+
+  function setPlayingUI(playing) {
+    playBtn.textContent = playing ? "&#10074;&#10074;" : "&#9654;";
+    playBtn.setAttribute("aria-label", playing ? "Pausar &aacute;udio" : "Reproduzir &aacute;udio");
+
+    if (audioWave) {
+      audioWave.classList.toggle("is-playing", playing);
+    }
+  }
+
+  function hidePopup() {
+    if (popupAudio) popupAudio.style.display = "none";
+  }
+
+  /* PRIMEIRO BOT&Atilde;O:
+     wpp.mp3 &eacute; EXCLUSIVO do bot&atilde;o amarelo e s&oacute; pode tocar UMA VEZ.
+     Nenhum outro bot&atilde;o da p&aacute;gina chama esse &aacute;udio. */
+  revealBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    // Trava absoluta contra segundo disparo, toque duplo ou "ghost click" no mobile.
+    if (!wppNotificationPlayed) {
+      wppNotificationPlayed = true;
+
+      try {
+        wppNotification.pause();
+        wppNotification.currentTime = 0;
+
+        const notificationPromise = wppNotification.play();
+        if (notificationPromise && typeof notificationPromise.catch === "function") {
+          notificationPromise.catch(function(error) {
+            console.log("wpp.mp3 bloqueado pelo navegador:", error);
+          });
+        }
+      } catch (error) {
+        console.log("Erro ao tocar wpp.mp3:", error);
+      }
+    }
+
+    // O &aacute;udio principal 0513.mp3 continua parado.
+    audio.pause();
+    try { audio.currentTime = 0; } catch (error) {}
+
+    hidePopup();
+    setPlayingUI(false);
+    audioTime.textContent = "0:00";
+
+    revealBtn.style.display = "none";
+    audioWrapper.classList.remove("audio-wrapper-hidden");
+    audioWrapper.classList.add("audio-wrapper-visible");
+
+    // Remove o bot&atilde;o inicial do DOM ap&oacute;s a revela&ccedil;&atilde;o para impedir qualquer
+    // disparo acidental posterior do wpp.mp3.
+    requestAnimationFrame(function() {
+      if (revealBtn && revealBtn.parentNode) {
+        revealBtn.parentNode.removeChild(revealBtn);
+      }
+    });
+  }, { once: true });
+
+  /* SOMENTE ESTE PLAY inicia o &aacute;udio principal 0513.mp3 */
+  playBtn.addEventListener("click", async function(event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    /* GARANTIA:
+       este bot&atilde;o NUNCA toca wpp.mp3.
+       Se o som de notifica&ccedil;&atilde;o ainda estiver tocando do clique anterior,
+       ele &eacute; interrompido antes de iniciar o 0513.mp3. */
+    if (wppNotification) {
+      try {
+        wppNotification.pause();
+        wppNotification.currentTime = 0;
+      } catch (error) {}
+    }
+
+    playerWasClicked = true;
+    hidePopup();
+
+    if (audio.paused || audio.ended) {
+      if (audio.ended) {
+        try { audio.currentTime = 0; } catch (error) {}
+      }
+
+      mainAudioStarted = true;
+
+      try {
+        // For&ccedil;a o navegador a carregar o 0513.mp3 se ainda n&atilde;o carregou.
+        if (audio.readyState === 0) {
+          audio.load();
+        }
+
+        await audio.play();
+        setPlayingUI(true);
+      } catch (error) {
+        setPlayingUI(false);
+        console.log("Erro ao tocar 0513.mp3:", error);
+      }
+    } else {
+      audio.pause();
+      setPlayingUI(false);
+    }
+  });
+
+  audio.addEventListener("loadedmetadata", function() {
+    if (!mainAudioStarted) {
+      audioTime.textContent = "0:00";
+    }
+  });
+
+  audio.addEventListener("play", function() {
+    if (!playerWasClicked) {
+      audio.pause();
+      try { audio.currentTime = 0; } catch (error) {}
+      setPlayingUI(false);
+      return;
+    }
+
+    if (mainAudioStarted) setPlayingUI(true);
+  });
+
+  audio.addEventListener("pause", function() {
+    if (!audio.ended) setPlayingUI(false);
+  });
+
+  audio.addEventListener("timeupdate", function() {
+    audioTime.textContent = formatTime(audio.currentTime);
+  });
+
+  /* Quando o 0513.mp3 terminar, abre o popup de autentica&ccedil;&atilde;o. */
+  audio.addEventListener("ended", function() {
+    setPlayingUI(false);
+    playerWasClicked = false;
+    audioTime.textContent = formatTime(audio.duration);
+
+    if (!mainAudioStarted) return;
+
+    setTimeout(function() {
+      playSfx(sfxAlert);
+      popupAudio.style.display = "flex";
+    }, 400);
+  });
+
+  audio.addEventListener("error", function() {
+    setPlayingUI(false);
+    console.log(
+      "Falha ao carregar 0513.mp3. Verifique se o arquivo est&aacute; na mesma pasta do HTML e se o nome &eacute; exatamente 0513.mp3."
+    );
+  });
+
+  btnPopupAudio.addEventListener("click", function() {
+    redirectWithParams("pesquisa1.html");
+  });
+
+  /* Estado inicial */
+  audio.autoplay = false;
+  audio.pause();
+  try { audio.currentTime = 0; } catch (error) {}
+  setPlayingUI(false);
+  hidePopup();
+})();
+</script>
+
+      <p class="subcopy">Confirme sua participa&ccedil;&atilde;o para acessar o conte&uacute;do exclusivo.</p>
+      <p class="secure">&#128274; Conex&atilde;o segura &middot; Pesquisa an&ocirc;nima</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 &middot; Brasil acima de tudo</p>
+  </footer>
+</main>
+
+</body>
+</html>
